@@ -29,29 +29,110 @@ Signup page
 
 <img width="1124" height="645" alt="image" src="https://github.com/user-attachments/assets/a15a814e-8902-41a4-a125-4b99618f5797" />
 
-How to Run the Project
-Follow these steps to run the project on your local machine:
-  1.Frontend (React):
--> Open a terminal (Terminal-1).
--> Navigate to the 'frontend' directory using 'cd frontend/'.
--> Run the following command to start the React development server:
-npm install
-npm run start
- 2. Backend
- ->Open another terminal (Terminal-2).
- -> Navigate to the 'server' directory using 'cd server/'.
- ->Run the following command to start the Flask server:
-    python app.py
-3. MongoDB setup:
- ->If you want to use the login/signup, text-to-speech, and translation features, you'll need to set up MongoDB.
- ->Open a third terminal (Terminal-3).
- ->Navigate to the 'backend' directory using 'cd backend/'.
- -> Start the Node.js server:
-      node app.js
- ->Open a fourth terminal (Terminal-4).
- ->Start the MongoDB server:
-     mongod
- ->Open a fifth terminal (Terminal-5).
-     mongo
-4.Access the Application:
-   Open your web browser and go to http://localhost:3000.
+
+
+ 1. Frontend (React)
+
+1. Open a terminal (**Terminal-1**)
+2. Navigate to the frontend directory:
+
+   
+   cd frontend
+  
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+4. Start the React development server:
+
+   ```bash
+   npm start
+   ```
+
+---
+
+### 📌 2. Backend (Flask – Image Captioning API)
+
+1. Open another terminal (**Terminal-2**)
+2. Navigate to the server directory:
+
+   ```bash
+   cd server
+   ```
+3. Start the Flask server:
+
+   ```bash
+   python app.py
+   ```
+
+---
+
+### 📌 3. MongoDB Setup (Optional – For Login / Signup / Extra Features)
+
+> Required only if you want to use **login/signup, text-to-speech, or translation features**.
+
+1. Open a new terminal (**Terminal-3**)
+
+2. Navigate to the backend directory:
+
+   ```bash
+   cd backend
+   ```
+
+3. Start the Node.js server:
+
+   ```bash
+   node app.js
+   ```
+
+4. Open another terminal (**Terminal-4**) and start MongoDB:
+
+   ```bash
+   mongod
+   ```
+
+5. (Optional) Open Mongo shell (**Terminal-5**):
+
+   ```bash
+   mongo
+   ```
+
+---
+
+### 🌐 4. Access the Application
+
+Open your web browser and visit:
+
+```
+http://localhost:3000
+```
+
+---
+
+## ✅ Notes
+
+* Make sure **Node.js**, **Python**, and **MongoDB** are installed.
+* Use **Python 3.x** for the backend.
+* Run each service in a **separate terminal**.
+
+---
+
+## ✨ Why this looks good now
+
+* Uses **headings**
+* Uses **numbered steps**
+* Uses **code blocks**
+* Easy to read & interview-ready
+* GitHub renders it beautifully
+
+---
+
+If you want, next I can:
+
+* ✨ Rewrite your **entire README professionally**
+* 🧠 Add **Project Architecture** section
+* 📸 Add screenshots properly
+* 🚀 Add deployment steps
+
+Just tell me 😊
