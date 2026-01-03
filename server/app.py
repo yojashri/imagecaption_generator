@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify
 # from flask import Flask, render_template,request
 import cv2
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 from keras.applications import ResNet50
 from keras.optimizers import Adam
 from keras.layers import Dense, Flatten,Input, Convolution2D, Dropout, LSTM, TimeDistributed, Embedding, Bidirectional, Activation, RepeatVector,Concatenate
 from keras.models import Sequential, Model
-from keras.utils import np_utils
+from tensorflow.keras.utils import to_categorical
+
 from keras.preprocessing import image, sequence
 import cv2
-from keras_preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tqdm import tqdm
 # from keras.applications.Resnet50 import preprocess_input
 from flask_cors import CORS
@@ -35,25 +36,26 @@ max_len = 40
 # max_len = 36                            #---------------- Changes
 vocab_size = len(vocab)
 
-image_model = Sequential()
-
-image_model.add(Dense(embedding_size, input_shape=(2048,), activation='relu'))
-image_model.add(RepeatVector(max_len))
-
-
-language_model = Sequential()
-
-language_model.add(Embedding(input_dim=vocab_size, output_dim=embedding_size, input_length=max_len))
-language_model.add(LSTM(256, return_sequences=True))
-language_model.add(TimeDistributed(Dense(embedding_size)))
+image_input = Input(shape=(2048,))
+image_dense = Dense(embedding_size, activation='relu')(image_input)
+image_out = RepeatVector(max_len)(image_dense)
 
 
-conca = Concatenate()([image_model.output, language_model.output])
-x = LSTM(128, return_sequences=True)(conca)
+lang_input = Input(shape=(max_len,))
+lang_embed = Embedding(input_dim=vocab_size, output_dim=embedding_size)(lang_input)
+lang_lstm = LSTM(256, return_sequences=True)(lang_embed)
+lang_out = TimeDistributed(Dense(embedding_size))(lang_lstm)
+
+
+
+merged = Concatenate()([image_out, lang_out])
+x = LSTM(128, return_sequences=True)(merged)
 x = LSTM(512, return_sequences=False)(x)
 x = Dense(vocab_size)(x)
 out = Activation('softmax')(x)
-model = Model(inputs=[image_model.input, language_model.input], outputs = out)
+
+model = Model(inputs=[image_input, lang_input], outputs=out)
+
 
 # model.load_weights("../input/model_weights.h5")
 model.compile(loss='categorical_crossentropy', optimizer='RMSprop', metrics=['accuracy'])
