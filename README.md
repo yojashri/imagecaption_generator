@@ -31,14 +31,14 @@ Signup page
 
 
 
- 1. Frontend (React)
+### 1. Frontend (React)
 
 1. Open a terminal (**Terminal-1**)
 2. Navigate to the frontend directory:
 
-   
+   ```bash
    cd frontend
-  
+     ```
 3. Install dependencies:
 
    ```bash
@@ -52,7 +52,7 @@ Signup page
 
 ---
 
-### 📌 2. Backend (Flask – Image Captioning API)
+###  2. Backend (Flask – Image Captioning API)
 
 1. Open another terminal (**Terminal-2**)
 2. Navigate to the server directory:
@@ -68,7 +68,7 @@ Signup page
 
 ---
 
-### 📌 3. MongoDB Setup (Optional – For Login / Signup / Extra Features)
+###  3. MongoDB Setup (Optional – For Login / Signup / Extra Features)
 
 > Required only if you want to use **login/signup, text-to-speech, or translation features**.
 
@@ -100,7 +100,7 @@ Signup page
 
 ---
 
-### 🌐 4. Access the Application
+### 4. Access the Application
 
 Open your web browser and visit:
 
@@ -109,30 +109,3 @@ http://localhost:3000
 ```
 
 ---
-
-## ✅ Notes
-
-* Make sure **Node.js**, **Python**, and **MongoDB** are installed.
-* Use **Python 3.x** for the backend.
-* Run each service in a **separate terminal**.
-
----
-
-## ✨ Why this looks good now
-
-* Uses **headings**
-* Uses **numbered steps**
-* Uses **code blocks**
-* Easy to read & interview-ready
-* GitHub renders it beautifully
-
----
-
-If you want, next I can:
-
-* ✨ Rewrite your **entire README professionally**
-* 🧠 Add **Project Architecture** section
-* 📸 Add screenshots properly
-* 🚀 Add deployment steps
-
-Just tell me 😊
